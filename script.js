@@ -316,6 +316,7 @@ function resetCheckoutForm() {
     document.getElementById('phone').value = '';
     document.querySelector('input[name="payment"]').checked = false;
         }
+
 function setupBannerScroll() {
     const wrapper = document.getElementById('banners-wrapper');
     let startX = 0;
