@@ -262,7 +262,7 @@ function processOrder() {
         total += itemTotal;
         orderDetails += `- ${item.name} (${item.flavor}) x${item.quantity} = Rp ${itemTotal.toLocaleString('id-ID')}\n`;
     });
-    orderDetails += `\nTotal: Rp ${total.toLocaleString('id-ID')}\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}\nPengambilan: ${delivery === 'pickup' ? 'Ambil Langsung'}`;
+    orderDetails += `\nTotal: Rp ${total.toLocaleString('id-ID')}\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}`;
     // Save order
     const order = {
         name: name,
@@ -315,7 +315,8 @@ function resetCheckoutForm() {
     document.getElementById('name').value = '';
     document.getElementById('phone').value = '';
     document.querySelector('input[name="payment"]').checked = false;
-        }function setupBannerScroll() {
+        }
+function setupBannerScroll() {
     const wrapper = document.getElementById('banners-wrapper');
     let startX = 0;
     let currentX = 0;
