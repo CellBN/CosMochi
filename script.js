@@ -1,13 +1,14 @@
 // Product Data
 const products = [
-    { id: 1, name: 'Merkurius', flavor: 'Oreo', price: 12000 },
-    { id: 2, name: 'Venus', flavor: 'Vanila', price: 12000 },
-    { id: 3, name: 'Bumi', flavor: 'Matcha', price: 12000 },
-    { id: 4, name: 'Mars', flavor: 'Stroberi', price: 12000 },
-    { id: 5, name: 'Jupiter', flavor: 'Peanut Butter', price: 12000 },
-    { id: 6, name: 'Saturnus', flavor: 'Keju', price: 12000 },
-    { id: 7, name: 'Uranus', flavor: 'Mint', price: 12000 },
-    { id: 8, name: 'Neptunus', flavor: 'Bluberry', price: 12000 }
+    const products = [
+    { id: 1, name: 'Merkurius', flavor: 'Oreo', price: 12000, image: 'Merkurius.png' },
+    { id: 2, name: 'Venus', flavor: 'Vanila', price: 12000, image: 'Venus.png' },
+    { id: 3, name: 'Bumi', flavor: 'Matcha', price: 12000, image: 'Bumi.png' },
+    { id: 4, name: 'Mars', flavor: 'Stroberi', price: 12000, image: 'Mars.png' },
+    { id: 5, name: 'Jupiter', flavor: 'Peanut Butter', price: 12000, image: 'Jupiter.png' },
+    { id: 6, name: 'Saturnus', flavor: 'Keju', price: 12000, image: 'Saturnus.png' },
+    { id: 7, name: 'Uranus', flavor: 'Mint', price: 12000, image: 'Uranus.png' },
+    { id: 8, name: 'Neptunus', flavor: 'Bluberry', price: 12000, image: 'Neptunus.png' }
 ];
 
 // Cart Management
@@ -30,7 +31,7 @@ function loadProducts() {
         productCard.className = 'product-card';
         productCard.innerHTML = `
             <div class="product-image">
-                <img src="" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%237dd3c0%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2218%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E${product.name}%3C/text%3E%3C/svg%3E'">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%237dd3c0%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2218%22 fill=%22white%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E${product.name}%3C/text%3E%3C/svg%3E'">
             </div>
             <div class="product-info">
                 <div class="product-name">${product.name}</div>
