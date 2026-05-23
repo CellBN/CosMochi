@@ -277,7 +277,13 @@ function processOrder() {
     const orders = JSON.parse(localStorage.getItem('cosmochi_orders') || '[]');
     orders.push(order);
     localStorage.setItem('cosmochi_orders', JSON.stringify(orders));
-    
+
+    const message = encodeURIComponent(orderDetails);
+
+window.open(
+  `https://wa.me/6288289008913?text=${message}`,
+  '_blank'
+);
     // Show Success Modal
     document.getElementById('checkout-modal').style.display = 'none';
     const successModal = document.getElementById('success-modal');
