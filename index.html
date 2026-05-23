@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmochi - Donat Mochi Online</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Cosmochi Logo" class="logo-img">
+                <span>COSMOCHI</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#products">PRODUK</a></li>
+                <li><a href="#contact">KONTAK</a></li>
+                <li><a href="#cart" class="cart-icon">🛒 (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <section class="banner" id="home">
+        <img src="banner.png" alt="Cosmochi Banner" class="banner-img">
+        <div class="banner-text">
+            <h1>RASA LUAR BIASA DARI LUAR ANGKASA</h1>
+            <p>Donat Mochi Lezat dengan Berbagai Rasa Pilihan</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2>KOLEKSI PRODUK KAMI</h2>
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>HUBUNGI KAMI</h2>
+        <div class="contact-info">
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/cosmoochi" target="_blank">@cosmoochi</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/6282110078618" target="_blank">+62 821-1007-8618</a></p>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>KERANJANG BELANJA</h2>
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items will be loaded by JavaScript -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: Rp <span id="total-price">0</span></h3>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">LANJUT KE PEMBAYARAN</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content checkout-content">
+            <span class="close">&times;</span>
+            <h2>DATA DIRI & PEMBAYARAN</h2>
+            
+            <!-- Warning Note -->
+            <div class="warning-note">
+                <strong>⚠️ PERHATIAN:</strong>
+                <p>Ini adalah sistem PO dan akan diberikan pada hari <strong>Jumat, 29 Mei 2026</strong> di lokasi berikut:</p>
+                <p><strong>Strada St. Thomas Aquino Tangerang</strong><br>
+                Jalan Kavling Surya Banten, RT.02/RW06/RW.004<br>
+                Pabuaran, Kec. Karawaci<br>
+                Kota Tangerang, Banten 15114</p>
+                <p>atau via <strong>delivery sekitar daerah Tangerang</strong></p>
+            </div>
+
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap *</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Nomor WhatsApp *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Alamat (untuk delivery) *</label>
+                    <textarea id="address" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="delivery">Pilih Metode Pengiriman *</label>
+                    <select id="delivery" required>
+                        <option value="">-- Pilih --</option>
+                        <option value="pickup">Ambil Langsung (29 Mei 2026)</option>
+                        <option value="delivery">Delivery Tangerang</option>
+                    </select>
+                </div>
+
+                <h3>Metode Pembayaran</h3>
+                <div class="payment-methods">
+                    <div class="payment-option">
+                        <input type="radio" id="qris" name="payment" value="qris" required>
+                        <label for="qris">QRIS</label>
+                        <button type="button" class="show-qris-btn" onclick="showQRIS()">Tampilkan Kode QRIS</button>
+                    </div>
+                    <div class="payment-option">
+                        <input type="radio" id="cash" name="payment" value="cash">
+                        <label for="cash">Cash (Tunai saat penerimaan)</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">SELESAIKAN PESANAN</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- QRIS Modal -->
+    <div id="qris-modal" class="modal">
+        <div class="modal-content qris-content">
+            <span class="close">&times;</span>
+            <h2>SCAN KODE QRIS</h2>
+            <img id="qris-image" src="qris.png" alt="QRIS Code" class="qris-image">
+            <p>Silakan scan kode QRIS di atas menggunakan aplikasi pembayaran Anda</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-content">
+            <h2>✓ PESANAN BERHASIL</h2>
+            <p id="success-message"></p>
+            <div class="success-info">
+                <p><strong>Silakan kirimkan bukti pembayaran dan konfirmasi pesanan ke:</strong></p>
+                <p class="wa-number"><a href="https://wa.me/088289008913" target="_blank">WhatsApp: 088289008913</a></p>
+                <p style="margin-top: 15px; font-size: 12px; color: #666;">Jangan tutup jendela ini sampai 5 detik...</p>
+            </div>
+            <div id="countdown" style="font-size: 24px; font-weight: bold; margin-top: 20px; text-align: center;">5</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cosmochi - Donat Mochi Online. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
