@@ -299,6 +299,13 @@ if (successMessage) {
     successMessage.innerHTML = summaryText;
 }
     successModal.style.display = 'block';
+
+const message = encodeURIComponent(orderDetails);
+
+setTimeout(() => {
+    window.location.href =
+    `https://wa.me/6288289008913?text=${message}`;
+}, 1000);
     
     // Countdown
     let countdown = 15;
