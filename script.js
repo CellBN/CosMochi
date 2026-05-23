@@ -245,6 +245,7 @@ function showQRIS() {
 
 // Process Order
 function processOrder() {
+    console.log('processOrder berjalan');
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
     const payment = document.querySelector('input[name="payment"]:checked');
@@ -286,8 +287,11 @@ function processOrder() {
     summaryText += `<strong>Total:</strong> Rp ${total.toLocaleString('id-ID')}<br>`;
     summaryText += `<strong>Metode Pembayaran:</strong> ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}<br><br>`;
     
-    document.getElementById('success-message').innerHTML = summaryText;
-    
+   const successMessage = document.getElementById('success-message');
+
+if (successMessage) {
+    successMessage.innerHTML = summaryText;
+}
     successModal.style.display = 'block';
     
     // Countdown
