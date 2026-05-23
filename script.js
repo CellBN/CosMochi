@@ -12,13 +12,64 @@ const products = [
 
 // Cart Management
 let cart = [];
+let currentBannerIndex = 0;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     loadProducts();
     setupModals();
     loadCartFromLocalStorage();
+    setupBannerScroll();
 });
+
+// Banner Navigation
+function goToBanner(index) {
+    currentBannerIndex = index;
+    const wrapper = document.getElementById('banners-wrapper');
+    wrapper.style.transform = `translateX(-${index * 100}%)`;
+    
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+function setupBannerScroll() {
+    const wrapper = document.getElementById('banners-wrapper');
+    let startX = 0;
+    let currentX = 0;
+    let isScrolling = false;
+
+    wrapper.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isScrolling = true;
+    });
+
+    wrapper.addEventListener('touchmove', (e) => {
+        if (!isScrolling) return;
+        currentX = e.touches[0].clientX;
+    });
+
+    wrapper.addEventListener('touchend', () => {
+        if (!isScrolling) return;
+        isScrolling = false;
+
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0 && currentBannerIndex < 1) {
+                goToBanner(currentBannerIndex + 1);
+            } else if (diff < 0 && currentBannerIndex > 0) {
+                goToBanner(currentBannerIndex - 1);
+            }
+        }
+    });
+}
+
+function goToProducts() {
+    document.getElementById('landing').style.display = 'none';
+    document.getElementById('navbar').classList.add('show');
+    window.scrollTo(0, 0);
+}
 
 // Load Products
 function loadProducts() {

@@ -7,30 +7,87 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Landing Page -->
+    <section class="landing-page" id="landing">
+        <!-- Logo in Top Right -->
+        <div class="landing-logo">
+            <img src="logo.png" alt="Cosmochi Logo" class="landing-logo-img">
+        </div>
+
+        <!-- Scrollable Banner Container -->
+        <div class="banner-container">
+            <div class="banners-wrapper" id="banners-wrapper">
+                <!-- Page 1: Main Banner -->
+                <div class="banner-page">
+                    <img src="banner.png" alt="Cosmochi Banner" class="landing-banner-img">
+                </div>
+                <!-- Page 2: Semua Rasa -->
+                <div class="banner-page">
+                    <div class="rasa-page">
+                        <h2>SEMUA RASA</h2>
+                        <div class="rasa-list">
+                            <div class="rasa-item">
+                                <span class="rasa-name">☿️ MERKURIUS</span>
+                                <span class="rasa-flavor">OREO</span>
+                            </div>
+                            <div class="rasa-item">
+                                <span class="rasa-name">♀️ VENUS</span>
+                                <span class="rasa-flavor">VANILA</span>
+                            </div>
+                            <div class="rasa-item">
+                                <span class="rasa-name">🜨 BUMI</span>
+                                <span class="rasa-flavor">MATCHA</span>
+                            </div>
+                            <div class="rasa-item">
+                                <span class="rasa-name">♂️ MARS</span>
+                                <span class="rasa-flavor">STROBERI</span>
+                            </div>
+                            <div class="rasa-item">
+                                <span class="rasa-name">♃ JUPITER</span>
+                                <span class="rasa-flavor">PEANUT BUTTER</span>
+                            </div>
+                            <div class="rasa-item">
+                                <span class="rasa-name">♄ SATURNUS</span>
+                                <span class="rasa-flavor">KEJU</span>
+                            </div>
+                            <div class="rasa-item">
+                                <span class="rasa-name">♅ URANUS</span>
+                                <span class="rasa-flavor">MINT</span>
+                            </div>
+                            <div class="rasa-item">
+                                <span class="rasa-name">♆ NEPTUNUS</span>
+                                <span class="rasa-flavor">BLUBERRY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banner Navigation Dots -->
+            <div class="banner-dots">
+                <span class="dot active" onclick="goToBanner(0)"></span>
+                <span class="dot" onclick="goToBanner(1)"></span>
+            </div>
+        </div>
+
+        <!-- Shopping Now Button -->
+        <button class="shopping-btn" onclick="goToProducts()">SHOPPING NOW</button>
+    </section>
+
     <!-- Navigation Bar -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">
                 <img src="logo.png" alt="Cosmochi Logo" class="logo-img">
                 <span>COSMOCHI</span>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home">HOME</a></li>
                 <li><a href="#products">PRODUK</a></li>
                 <li><a href="#contact">KONTAK</a></li>
                 <li><a href="#cart" class="cart-icon">🛒 (<span id="cart-count">0</span>)</a></li>
             </ul>
         </div>
     </nav>
-
-    <!-- Banner Section -->
-    <section class="banner" id="home">
-        <img src="banner.png" alt="Cosmochi Banner" class="banner-img">
-        <div class="banner-text">
-            <h1>RASA LUAR BIASA DARI LUAR ANGKASA</h1>
-            <p>Donat Mochi Lezat dengan Berbagai Rasa Pilihan</p>
-        </div>
-    </section>
 
     <!-- Products Section -->
     <section class="products" id="products">
