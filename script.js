@@ -1,13 +1,13 @@
 // Product Data
 const products = [
-    { id: 1, name: 'Merkurius', flavor: 'Oreo', price: Rp12000 },
-    { id: 2, name: 'Venus', flavor: 'Vanila', price: Rp12000 },
-    { id: 3, name: 'Bumi', flavor: 'Matcha', price: Rp12000 },
-    { id: 4, name: 'Mars', flavor: 'Stroberi', price: Rp12000 },
-    { id: 5, name: 'Jupiter', flavor: 'Peanut Butter', price: Rp12000 },
-    { id: 6, name: 'Saturnus', flavor: 'Keju', price: Rp12000 },
-    { id: 7, name: 'Uranus', flavor: 'Mint', price: Rp12000 },
-    { id: 8, name: 'Neptunus', flavor: 'Bluberry', price: Rp12000 }
+    { id: 1, name: 'Merkurius', flavor: 'Oreo', price: 12000 },
+    { id: 2, name: 'Venus', flavor: 'Vanila', price: 12000 },
+    { id: 3, name: 'Bumi', flavor: 'Matcha', price: 12000 },
+    { id: 4, name: 'Mars', flavor: 'Stroberi', price: 12000 },
+    { id: 5, name: 'Jupiter', flavor: 'Peanut Butter', price: 12000 },
+    { id: 6, name: 'Saturnus', flavor: 'Keju', price: 12000 },
+    { id: 7, name: 'Uranus', flavor: 'Mint', price: 12000 },
+    { id: 8, name: 'Neptunus', flavor: 'Bluberry', price: 12000 }
 ];
 
 // Cart Management
