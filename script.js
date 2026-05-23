@@ -1,6 +1,5 @@
 // Product Data
 const products = [
-    const products = [
     { id: 1, name: 'Merkurius', flavor: 'Oreo', price: 12000, image: 'Merkurius.png' },
     { id: 2, name: 'Venus', flavor: 'Vanila', price: 12000, image: 'Venus.png' },
     { id: 3, name: 'Bumi', flavor: 'Matcha', price: 12000, image: 'Bumi.png' },
