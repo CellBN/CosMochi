@@ -314,8 +314,13 @@ function resetCheckoutForm() {
     document.getElementById('checkout-form').reset();
     document.getElementById('name').value = '';
     document.getElementById('phone').value = '';
-    document.querySelector('input[name="payment"]').checked = false;
-        }
+
+    const payment = document.querySelector('input[name="payment"]:checked');
+
+    if (payment) {
+        payment.checked = false;
+    }
+}
 
 function setupBannerScroll() {
     const wrapper = document.getElementById('banners-wrapper');
