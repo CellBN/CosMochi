@@ -299,8 +299,6 @@ if (successMessage) {
     successMessage.innerHTML = summaryText;
 }
     successModal.style.display = 'block';
-
-}, 1000);
     
     // Countdown
     let countdown = 15;
