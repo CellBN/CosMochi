@@ -78,48 +78,41 @@
                 Jalan Kavling Surya Banten, RT.02/RW06/RW.004<br>
                 Pabuaran, Kec. Karawaci<br>
                 Kota Tangerang, Banten 15114</p>
-                <p>atau via <strong>delivery sekitar daerah Tangerang</strong></p>
             </div>
 
             <form id="checkout-form">
-                <div class="form-group">
-                    <label for="name">Nama Lengkap *</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Nomor WhatsApp *</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Alamat (untuk delivery) *</label>
-                    <textarea id="address" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="delivery">Pilih Metode Pengiriman *</label>
-                    <select id="delivery" required>
-                        <option value="">-- Pilih --</option>
-                        <option value="pickup">Ambil Langsung (29 Mei 2026)</option>
-                        <option value="delivery">Delivery Tangerang</option>
-                    </select>
-                </div>
+    <div class="form-group">
+        <label for="name">Nama Lengkap *</label>
+        <input type="text" id="name" required>
+    </div>
 
-                <h3>Metode Pembayaran</h3>
-                <div class="payment-methods">
-                    <div class="payment-option">
-                        <input type="radio" id="qris" name="payment" value="qris" required>
-                        <label for="qris">QRIS</label>
-                        <button type="button" class="show-qris-btn" onclick="showQRIS()">Tampilkan Kode QRIS</button>
-                    </div>
-                    <div class="payment-option">
-                        <input type="radio" id="cash" name="payment" value="cash">
-                        <label for="cash">Cash (Tunai saat penerimaan)</label>
-                    </div>
-                </div>
+    <div class="form-group">
+        <label for="phone">Nomor WhatsApp *</label>
+        <input type="tel" id="phone" required>
+    </div>
 
-                <button type="submit" class="submit-btn">SELESAIKAN PESANAN</button>
-            </form>
+    <h3>Metode Pembayaran</h3>
+
+    <div class="payment-methods">
+        <div class="payment-option">
+            <input type="radio" id="qris" name="payment" value="qris" required>
+            <label for="qris">QRIS</label>
+
+            <button type="button" class="show-qris-btn" onclick="showQRIS()">
+                Tampilkan Kode QRIS
+            </button>
+        </div>
+
+        <div class="payment-option">
+            <input type="radio" id="cash" name="payment" value="cash">
+            <label for="cash">Cash (Tunai saat penerimaan)</label>
         </div>
     </div>
+
+    <button type="submit" class="submit-btn">
+        SELESAIKAN PESANAN
+    </button>
+</form>
 
     <!-- QRIS Modal -->
     <div id="qris-modal" class="modal">
