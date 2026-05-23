@@ -247,8 +247,6 @@ function showQRIS() {
 function processOrder() {
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
-    const address = document.getElementById('address').value;
-    const delivery = document.getElementById('delivery').value;
     const payment = document.querySelector('input[name="payment"]:checked');
     
     if (!name || !phone || !payment) {
@@ -264,13 +262,11 @@ function processOrder() {
         total += itemTotal;
         orderDetails += `- ${item.name} (${item.flavor}) x${item.quantity} = Rp ${itemTotal.toLocaleString('id-ID')}\n`;
     });
-    orderDetails += `\nTotal: Rp ${total.toLocaleString('id-ID')}\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}\nMetode Pengiriman: ${delivery === 'pickup' ? 'Ambil Langsung'}`;
-    g'
+    orderDetails += `\nTotal: Rp ${total.toLocaleString('id-ID')}\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}\nPengambilan: ${delivery === 'pickup' ? 'Ambil Langsung'}`;
     // Save order
     const order = {
         name: name,
         phone: phone,
-        address: address,
         payment: payment.value,
         items: cart,
         total: total,
@@ -318,8 +314,6 @@ function resetCheckoutForm() {
     document.getElementById('checkout-form').reset();
     document.getElementById('name').value = '';
     document.getElementById('phone').value = '';
-    document.getElementById('address').value = '';
-    document.getElementById('delivery').value = '';
     document.querySelector('input[name="payment"]').checked = false;
         }function setupBannerScroll() {
     const wrapper = document.getElementById('banners-wrapper');
