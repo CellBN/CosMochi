@@ -295,7 +295,7 @@ if (successMessage) {
     successModal.style.display = 'block';
     
     // Countdown
-    let countdown = 5;
+    let countdown = 15;
     const countdownEl = document.getElementById('countdown');
     const interval = setInterval(() => {
         countdown--;
