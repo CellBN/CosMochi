@@ -125,9 +125,13 @@ function displayCart() {
     }
     
     let total = 0;
-    cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
+let totalQty = 0;
+
+cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+
+    total += itemTotal;
+    totalQty += item.quantity;
         
         const cartItemEl = document.createElement('div');
         cartItemEl.className = 'cart-item';
@@ -146,8 +150,18 @@ function displayCart() {
         cartItems.appendChild(cartItemEl);
     });
     
-    document.getElementById('total-price').textContent = total.toLocaleString('id-ID');
-}
+    // Diskon setiap kelipatan 3 = 4000
+const discount = Math.floor(totalQty / 3) * 4000;
+
+const finalTotal = total - discount;
+
+document.getElementById('total-price').innerHTML = `
+    ${finalTotal.toLocaleString('id-ID')}
+    <br>
+    <small style="color:#5ecec5;">
+        Diskon: -Rp ${discount.toLocaleString('id-ID')}
+    </small>
+`;
 
 // Cart Quantity Functions
 function increaseCartQty(index) {
@@ -259,12 +273,19 @@ function processOrder() {
     // Create Order Summary
     let orderDetails = `Pesanan dari: ${name}\nKelas: ${studentClass}\nNo. WA: ${phone}\n\nDetail Pesanan:\n`;
     let total = 0;
-    cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
+let totalQty = 0;
+
+cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    const discount = Math.floor(totalQty / 3) * 4000;
+const finalTotal = total - discount;
+    
+    total += itemTotal;
+    totalQty += item.quantity;
         orderDetails += `- ${item.name} (${item.flavor}) x${item.quantity} = Rp ${itemTotal.toLocaleString('id-ID')}\n`;
-    });
-    orderDetails += `\nTotal: Rp ${total.toLocaleString('id-ID')}\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}`;
+    });orderDetails += `\nDiskon: Rp ${discount.toLocaleString('id-ID')}`;
+orderDetails += `\nTotal Akhir: Rp ${finalTotal.toLocaleString('id-ID')}`;
+orderDetails += `\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}`;
     // Save order
     const order = {
         name: name,
