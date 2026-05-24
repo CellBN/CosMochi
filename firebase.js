@@ -10,15 +10,18 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 // Firebase Config
+import { initializeApp } from "firebase/app";
 const firebaseConfig = {
-    apiKey: "API_KEY_KAMU",
-    authDomain: "PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://PROJECT_ID-default-rtdb.firebaseio.com",
-    projectId: "PROJECT_ID",
-    storageBucket: "PROJECT_ID.appspot.com",
-    messagingSenderId: "SENDER_ID",
-    appId: "APP_ID"
+  apiKey: "AIzaSyBmThyVoLbzL9pWUbCH-rWgA6-4r8uHKk4",
+  authDomain: "cosmochi-order.firebaseapp.com",
+  projectId: "cosmochi-order",
+  storageBucket: "cosmochi-order.firebasestorage.app",
+  messagingSenderId: "248296954133",
+  appId: "1:248296954133:web:bc16674919bdf64fe4f11c"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
