@@ -247,10 +247,11 @@ function showQRIS() {
 function processOrder() {
     console.log('processOrder berjalan');
     const name = document.getElementById('name').value;
+    const kelas = document.getElementById('kelas').value;
     const phone = document.getElementById('phone').value;
     const payment = document.querySelector('input[name="payment"]:checked');
     
-    if (!name || !phone || !payment) {
+    if (!name || !studentClass || !phone || !payment) {
         alert('Silakan isi semua data yang diperlukan!');
         return;
     }
@@ -268,6 +269,7 @@ function processOrder() {
     const order = {
         name: name,
         phone: phone,
+        kelas: studentClass,
         payment: payment.value,
         items: cart,
         total: total,
