@@ -247,7 +247,7 @@ function showQRIS() {
 function processOrder() {
     console.log('processOrder berjalan');
     const name = document.getElementById('name').value;
-    const kelas = document.getElementById('kelas').value;
+    const studentClass = document.getElementById('class').value;
     const phone = document.getElementById('phone').value;
     const payment = document.querySelector('input[name="payment"]:checked');
     
@@ -257,7 +257,7 @@ function processOrder() {
     }
     
     // Create Order Summary
-    let orderDetails = `Pesanan dari: ${name}\nNo. WA: ${phone}\n\nDetail Pesanan:\n`;
+    let orderDetails = `Pesanan dari: ${name}\nKelas: ${studentClass}\nNo. WA: ${phone}\n\nDetail Pesanan:\n`;
     let total = 0;
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
@@ -269,12 +269,24 @@ function processOrder() {
     const order = {
         name: name,
         phone: phone,
-        kelas: studentClass,
+        studentClass: studentClass,
         payment: payment.value,
         items: cart,
         total: total,
         date: new Date().toLocaleString('id-ID')
     };
+
+    fetch('URL_APPS_SCRIPT_KAMU', {
+    method: 'POST',
+    body: JSON.stringify(order)
+})
+.then(res => res.json())
+.then(data => {
+    console.log('Berhasil masuk spreadsheet');
+})
+.catch(err => {
+    console.error('Gagal:', err);
+});
     
     const orders = JSON.parse(localStorage.getItem('cosmochi_orders') || '[]');
     orders.push(order);
