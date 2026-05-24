@@ -147,8 +147,8 @@ cart.forEach((item, index) => {
                 <button class="remove-item-btn" onclick="removeFromCart(${index})">×</button>
             </div>
         `;
+}
         cartItems.appendChild(cartItemEl);
-    });
     
     // Diskon setiap kelipatan 3 = 4000
 const discount = Math.floor(totalQty / 3) * 4000;
@@ -270,22 +270,31 @@ function processOrder() {
         return;
     }
     
+
     // Create Order Summary
-    let orderDetails = `Pesanan dari: ${name}\nKelas: ${studentClass}\nNo. WA: ${phone}\n\nDetail Pesanan:\n`;
-    let total = 0;
+let orderDetails = `Pesanan dari: ${name}\nKelas: ${studentClass}\nNo. WA: ${phone}\n\nDetail Pesanan:\n`;
+
+let total = 0;
 let totalQty = 0;
 
 cart.forEach(item => {
     const itemTotal = item.price * item.quantity;
-    const discount = Math.floor(totalQty / 3) * 4000;
-const finalTotal = total - discount;
-    
+
     total += itemTotal;
     totalQty += item.quantity;
-        orderDetails += `- ${item.name} (${item.flavor}) x${item.quantity} = Rp ${itemTotal.toLocaleString('id-ID')}\n`;
-    });orderDetails += `\nDiskon: Rp ${discount.toLocaleString('id-ID')}`;
+
+    orderDetails += `- ${item.name} (${item.flavor}) x${item.quantity} = Rp ${itemTotal.toLocaleString('id-ID')}\n`;
+});
+
+// HITUNG DISKON SETELAH LOOP
+const discount = Math.floor(totalQty / 3) * 4000;
+const finalTotal = total - discount;
+
+// TAMBAHKAN KE DETAIL PESANAN
+orderDetails += `\nDiskon: Rp ${discount.toLocaleString('id-ID')}`;
 orderDetails += `\nTotal Akhir: Rp ${finalTotal.toLocaleString('id-ID')}`;
 orderDetails += `\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}`;
+    
     // Save order
     const order = {
         name: name,
