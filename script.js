@@ -275,8 +275,6 @@ function processOrder() {
         total: total,
         date: new Date().toLocaleString('id-ID')
     };
-
-    push(ref(db, 'orders'), order);
     
     const orders = JSON.parse(localStorage.getItem('cosmochi_orders') || '[]');
     orders.push(order);
