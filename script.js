@@ -114,6 +114,7 @@ function loadCartFromLocalStorage() {
 }
 
 // Display Cart
+// Display Cart
 function displayCart() {
     const cartItems = document.getElementById('cart-items');
     cartItems.innerHTML = '';
@@ -125,43 +126,60 @@ function displayCart() {
     }
     
     let total = 0;
-let totalQty = 0;
+    let totalQty = 0;
 
-cart.forEach((item, index) => {
-    const itemTotal = item.price * item.quantity;
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
 
-    total += itemTotal;
-    totalQty += item.quantity;
+        total += itemTotal;
+        totalQty += item.quantity;
         
         const cartItemEl = document.createElement('div');
         cartItemEl.className = 'cart-item';
+
         cartItemEl.innerHTML = `
             <div class="cart-item-info">
                 <div class="cart-item-name">${item.name} (${item.flavor})</div>
-                <div class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')} x ${item.quantity}</div>
+                <div class="cart-item-price">
+                    Rp ${item.price.toLocaleString('id-ID')} x ${item.quantity}
+                </div>
             </div>
+
             <div class="cart-item-controls">
                 <button onclick="decreaseCartQty(${index})">-</button>
-                <input type="number" value="${item.quantity}" onchange="updateCartQty(${index}, this.value)" min="1">
+
+                <input 
+                    type="number" 
+                    value="${item.quantity}" 
+                    onchange="updateCartQty(${index}, this.value)" 
+                    min="1"
+                >
+
                 <button onclick="increaseCartQty(${index})">+</button>
-                <button class="remove-item-btn" onclick="removeFromCart(${index})">×</button>
+
+                <button class="remove-item-btn" onclick="removeFromCart(${index})">
+                    ×
+                </button>
             </div>
         `;
-}
+
         cartItems.appendChild(cartItemEl);
-    
-    // Diskon setiap kelipatan 3 = 4000
-const discount = Math.floor(totalQty / 3) * 4000;
+    });
 
-const finalTotal = total - discount;
+    // DISKON
+    const discount = Math.floor(totalQty / 3) * 4000;
 
-document.getElementById('total-price').innerHTML = `
-    ${finalTotal.toLocaleString('id-ID')}
-    <br>
-    <small style="color:#5ecec5;">
-        Diskon: -Rp ${discount.toLocaleString('id-ID')}
-    </small>
-`;
+    // TOTAL AKHIR
+    const finalTotal = total - discount;
+
+    document.getElementById('total-price').innerHTML = `
+        ${finalTotal.toLocaleString('id-ID')}
+        <br>
+        <small style="color:#5ecec5;">
+            Diskon: -Rp ${discount.toLocaleString('id-ID')}
+        </small>
+    `;
+}
 
 // Cart Quantity Functions
 function increaseCartQty(index) {
