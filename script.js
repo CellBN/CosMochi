@@ -293,7 +293,8 @@ orderDetails += `\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tun
         studentClass: studentClass,
         payment: payment.value,
         items: cart,
-        total: total,
+        total: finalTotal,
+        discount: discount,
         date: new Date().toLocaleString('id-ID')
     };
     
@@ -313,7 +314,8 @@ window.open(
     
     let summaryText = `<strong>Pesanan Berhasil Dibuat!</strong><br><br>`;
     summaryText += `<strong>Nama:</strong> ${name}<br>`;
-    summaryText += `<strong>Total:</strong> Rp ${total.toLocaleString('id-ID')}<br>`;
+    summaryText += `<strong>Diskon:</strong> Rp ${discount.toLocaleString('id-ID')}<br>`;
+    summaryText += `<strong>Total:</strong> Rp ${finalTotal.toLocaleString('id-ID')}<br>`;
     summaryText += `<strong>Metode Pembayaran:</strong> ${payment.value === 'qris' ? 'QRIS' : 'Tunai'}<br><br>`;
     
    const successMessage = document.getElementById('success-message');
