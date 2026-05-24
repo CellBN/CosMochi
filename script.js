@@ -276,17 +276,7 @@ function processOrder() {
         date: new Date().toLocaleString('id-ID')
     };
 
-    fetch('URL_APPS_SCRIPT_KAMU', {
-    method: 'POST',
-    body: JSON.stringify(order)
-})
-.then(res => res.json())
-.then(data => {
-    console.log('Berhasil masuk spreadsheet');
-})
-.catch(err => {
-    console.error('Gagal:', err);
-});
+    push(ref(db, 'orders'), order);
     
     const orders = JSON.parse(localStorage.getItem('cosmochi_orders') || '[]');
     orders.push(order);
