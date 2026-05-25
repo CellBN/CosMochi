@@ -325,7 +325,7 @@ orderDetails += `\nMetode Pembayaran: ${payment.value === 'qris' ? 'QRIS' : 'Tun
         date: new Date().toLocaleString('id-ID')
     };
     
-    fetch('URL_APPS_SCRIPT_KAMU', {
+    fetch('https://script.google.com/macros/s/AKfycbz2-_w6xUT0PCpvP9CPvkH4cWe7EgLfmJCLa37r0EkSkZ5RJ6GM272oqmVasBfI5aZ9/exec', {
     method: 'POST',
     body: JSON.stringify(order)
 })
